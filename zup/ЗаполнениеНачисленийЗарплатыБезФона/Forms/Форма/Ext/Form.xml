@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.17">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Заполнение начислений зарплаты без фонового задания</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="Пояснение" id="1">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тот же расчет, что у кнопки «Заполнить» в документе «Начисление зарплаты»: вызывается Документы.НачислениеЗарплаты.ПодготовитьДанныеДляЗаполнения сразу в этом сеансе, без фонового задания.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПояснениеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ПояснениеExtendedTooltip" id="3"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаОтбор" id="4">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборExtendedTooltip" id="5"/>
+			<ChildItems>
+				<InputField name="МесяцНачисления" id="6">
+					<DataPath>МесяцНачисления</DataPath>
+					<ContextMenu name="МесяцНачисленияКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="МесяцНачисленияExtendedTooltip" id="8"/>
+					<Events>
+						<Event name="OnChange">МесяцНачисленияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Организация" id="9">
+					<DataPath>Организация</DataPath>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="11"/>
+				</InputField>
+				<CheckBoxField name="ТолькоНепроведенные" id="12">
+					<DataPath>ТолькоНепроведенные</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТолькоНепроведенныеКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ТолькоНепроведенныеExtendedTooltip" id="14"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРежим" id="15">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРежимExtendedTooltip" id="16"/>
+			<ChildItems>
+				<CheckBoxField name="ПроводитьПослеЗаполнения" id="17">
+					<DataPath>ПроводитьПослеЗаполнения</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПроводитьПослеЗаполненияКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ПроводитьПослеЗаполненияExtendedTooltip" id="19"/>
+				</CheckBoxField>
+				<CheckBoxField name="ТолькоДиагностика" id="20">
+					<DataPath>ТолькоДиагностика</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТолькоДиагностикаКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ТолькоДиагностикаExtendedTooltip" id="22"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКоманды" id="23">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомандыExtendedTooltip" id="24"/>
+			<ChildItems>
+				<Button name="ПодобратьДокументы" id="25">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПодобратьДокументы</CommandName>
+					<ExtendedTooltip name="ПодобратьДокументыExtendedTooltip" id="26"/>
+				</Button>
+				<Button name="ОтметитьВсе" id="27">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ОтметитьВсе</CommandName>
+					<ExtendedTooltip name="ОтметитьВсеExtendedTooltip" id="28"/>
+				</Button>
+				<Button name="СнятьВсе" id="29">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.СнятьВсе</CommandName>
+					<ExtendedTooltip name="СнятьВсеExtendedTooltip" id="30"/>
+				</Button>
+				<Button name="ЗаполнитьВыбранные" id="31">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗаполнитьВыбранные</CommandName>
+					<ExtendedTooltip name="ЗаполнитьВыбранныеExtendedTooltip" id="32"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ДокументДляДобавления" id="33">
+			<DataPath>ДокументДляДобавления</DataPath>
+			<ClearButton>true</ClearButton>
+			<ContextMenu name="ДокументДляДобавленияКонтекстноеМеню" id="34"/>
+			<ExtendedTooltip name="ДокументДляДобавленияExtendedTooltip" id="35"/>
+			<Events>
+				<Event name="OnChange">ДокументДляДобавленияПриИзменении</Event>
+			</Events>
+		</InputField>
+		<Table name="ДокументыКЗаполнению" id="36">
+			<DataPath>ДокументыКЗаполнению</DataPath>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<ContextMenu name="ДокументыКЗаполнениюКонтекстноеМеню" id="37"/>
+			<ExtendedTooltip name="ДокументыКЗаполнениюExtendedTooltip" id="39"/>
+			<CommandBar name="ДокументыКЗаполнениюКоманднаяПанель" id="38">
+				<Autofill>false</Autofill>
+				<ExtendedTooltip name="ДокументыКЗаполнениюКоманднаяПанельExtendedTooltip" id="76"/>
+			</CommandBar>
+			<ChildItems>
+				<CheckBoxField name="ДокументыКЗаполнениюПометка" id="43">
+					<DataPath>ДокументыКЗаполнению.Пометка</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ДокументыКЗаполнениюПометкаКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюПометкаExtendedTooltip" id="45"/>
+				</CheckBoxField>
+				<InputField name="ДокументыКЗаполнениюСсылка" id="46">
+					<DataPath>ДокументыКЗаполнению.Ссылка</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюСсылкаКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюСсылкаExtendedTooltip" id="48"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюДата" id="49">
+					<DataPath>ДокументыКЗаполнению.Дата</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюДатаКонтекстноеМеню" id="50"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюДатаExtendedTooltip" id="51"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюНомер" id="52">
+					<DataPath>ДокументыКЗаполнению.Номер</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюНомерКонтекстноеМеню" id="53"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюНомерExtendedTooltip" id="54"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюОрганизация" id="55">
+					<DataPath>ДокументыКЗаполнению.Организация</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюОрганизацияКонтекстноеМеню" id="56"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюОрганизацияExtendedTooltip" id="57"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюПодразделение" id="58">
+					<DataPath>ДокументыКЗаполнению.Подразделение</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюПодразделениеКонтекстноеМеню" id="59"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюПодразделениеExtendedTooltip" id="60"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюМесяцНачисления" id="61">
+					<DataPath>ДокументыКЗаполнению.МесяцНачисления</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюМесяцНачисленияКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюМесяцНачисленияExtendedTooltip" id="63"/>
+				</InputField>
+				<CheckBoxField name="ДокументыКЗаполнениюПроведен" id="64">
+					<DataPath>ДокументыКЗаполнению.Проведен</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ДокументыКЗаполнениюПроведенКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюПроведенExtendedTooltip" id="66"/>
+				</CheckBoxField>
+				<InputField name="ДокументыКЗаполнениюКоличествоНачислений" id="67">
+					<DataPath>ДокументыКЗаполнению.КоличествоНачислений</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюКоличествоНачисленийКонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюКоличествоНачисленийExtendedTooltip" id="69"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюСостояние" id="70">
+					<DataPath>ДокументыКЗаполнению.Состояние</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюСостояниеКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюСостояниеExtendedTooltip" id="72"/>
+				</InputField>
+				<InputField name="ДокументыКЗаполнениюТекстОшибки" id="73">
+					<DataPath>ДокументыКЗаполнению.ТекстОшибки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКЗаполнениюТекстОшибкиКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="ДокументыКЗаполнениюТекстОшибкиExtendedTooltip" id="75"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.ЗаполнениеНачисленийЗарплатыБезФона</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="МесяцНачисления" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц начисления</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТолькоНепроведенные" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только непроведенные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроводитьПослеЗаполнения" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести после заполнения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТолькоДиагностика" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только диагностика, не записывать</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументДляДобавления" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.НачислениеЗарплаты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументыКЗаполнению" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Пометка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбрать</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Ссылка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.НачислениеЗарплаты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Дата" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>11</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Организация" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Подразделение" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+					</Type>
+				</Column>
+				<Column name="МесяцНачисления" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Месяц</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Проведен" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проведен</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КоличествоНачислений" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начислений</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Состояние" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТекстОшибки" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сообщение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодобратьДокументы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти документы начисления зарплаты за месяц</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьДокументы</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтметитьВсе" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить все</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОтметитьВсе</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьВсе" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СнятьВсе</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьВыбранные" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить выбранные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить отмеченные документы без фонового задания</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьВыбранные</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>
